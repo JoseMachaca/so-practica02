@@ -97,15 +97,6 @@ El comando `ls` se utiliza para listar los archivos y directorios del sistema de
 
 Al ejecutar `$ ls` en el directorio raíz, deberías observar una estructura similar a la siguiente:
 
-```text
-.              1 1 1024
-..             1 1 1024
-README         2 2 2441
-cat            2 3 36728
-ls             2 10 42880
-console        3 23 0
-```
-
 ![Arranque de xv6 y comandos de la Parte A](img/ParteA_01.png)
 
 ### Creación de una nueva carpeta en xv6 (`mkdir`)
@@ -160,10 +151,54 @@ Al ejecutar **`cat README`**, ocurre lo siguiente paso a paso:
 2. **Lectura de datos:** El kernel de xv6 abre el archivo y lee su contenido secuencialmente bloque por bloque.
 3. **Despliegue en pantalla:** Todo el texto contenido dentro del archivo `README` (que por lo general incluye información introductoria sobre la versión de xv6, instrucciones de compilación o notas de los desarrolladores) se imprime línea por línea en la terminal hasta llegar al final del archivo (`EOF`).
 
-### ¿Qué observar enn la captura?
+### ¿Qué ose observa enla captura?
 * **El comando ingresado:** Se ve la línea `$ cat README` junto al prompt de xv6.
 * **El texto impreso:** Aparece el contenido descriptivo del archivo en pantalla.
 * **Retorno al prompt:** Una vez finalizada la lectura, la terminal vuelve a mostrar el prompt (`$`) listo para recibir nuevos comandos.
 
 ![Arranque de xv6 y comandos de la Parte A](img/ParteA_03.png)
 
+### Pruebas del sistema de archivos en xv6 (`echo`, `cat` y `wc`)
+
+
+## 🚀 Uso Rápido de Comandos
+
+En la terminal de xv6 se ejecutaron los siguientes comandos secuencialmente:
+
+```sh
+$ echo echo prueba de sistema de archivos > archivo.txt
+$ cat archivo.txt
+$ wc archivo.txt
+```
+
+---
+
+## 📖 Explicación Detallada 
+
+A continuación se detalla el comportamiento de cada instrucción:
+
+### 1. Creación de archivos y redirección de salida (`echo` y `>`)
+* **Comando:** `$ echo echo prueba de sistema de archivos > archivo.txt`
+* **Explicación:** El comando `echo` imprime texto en pantalla. Al utilizar el operador de redirección `>`, se redirige esa salida para crear (o sobrescribir) un archivo llamado `archivo.txt` con el contenido especificado.
+
+### 2. Lectura del archivo (`cat`)
+* **Comando:** `$ cat archivo.txt`
+* **Salida obtenida:** `echo prueba de sistema de archivos`
+* **Explicación:** El comando `cat` lee el archivo recién creado y muestra su contenido completo en la terminal.
+
+### 3. Conteo de líneas, palabras y bytes (`wc`)
+* **Comando:** `$ wc archivo.txt`
+* **Salida obtenida:** `1 6 35 archivo.txt`
+* **Explicación:** El comando `wc` (*word count*) cuenta métricas del archivo:
+  * **1:** Cantidad de líneas.
+  * **6:** Cantidad de palabras.
+  * **35:** Cantidad de bytes (tamaño total del texto).
+
+### 4. Finalización del entorno
+* **Mensaje final:** `QEMU: Terminated`
+* **Explicación:** Indica que la sesión de emulación de QEMU/xv6 ha sido cerrada correctamente.
+
+---
+
+## 📷 Evidencia 
+![Arranque de xv6 y comandos de la Parte A](img/ParteA_04.png)
