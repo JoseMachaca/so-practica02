@@ -1,6 +1,6 @@
 # Instalación de xv6 sobre Ubuntu (WSL)
 
-## 4.1. Verificación de la versión de Ubuntu
+## 1. Verificación de la versión de Ubuntu
 
 ### Parte A: Confirmar la versión instalada
 Dentro de la terminal de Ubuntu, ejecutar:
@@ -15,7 +15,7 @@ Se requiere **Ubuntu 24.04** o superior. Versiones anteriores pueden instalar, m
 
 ---
 
-## 4.2. Instalación de las herramientas RISC-V y QEMU
+## 2. Instalación de las herramientas RISC-V y QEMU
 
 ### Parte A: Actualizar el repositorio de paquetes
 ```bash
@@ -34,7 +34,48 @@ sudo apt install git build-essential gdb-multiarch qemu-system-misc qemu-system-
 riscv64-linux-gnu-gcc --version
 qemu-system-riscv64 --version
 ```
-# Ejecución del comando `ls` en xv6
+Ambos comandos deben mostrar un número de versión, sin errores.
+> ℹ️ *Atención: No se debe emplear el nombre riscv64-unknown-elf-gcc en este curso: corresponde
+a una variante distinta del compilador, empleada en otras versiones del material del MIT. El paquete
+correcto para esta guía es gcc-riscv64-linux-gnu, invocado como riscv64-linux-gnu-gcc.*
+
+## 3. Obtención del código fuente de xv6
+### Parte A: Clonar el repositorio
+Ubicarse en la carpeta personal y ejecutar:
+```bash
+cd ~
+git clone https://github.com/mit-pdos/xv6-riscv.git
+cd xv6-riscv
+```
+## 4. Compilación y ejecución
+### Parte A: Compilar y arrancar xv6 dentro de QEMU
+```bash
+make qemu
+```
+Este comando compila el núcleo de xv6 y, a continuación, arranca QEMU cargando ese núcleo. En
+pantalla deben aparecer mensajes de arranque, nalizando con un intérprete de comandos propio de
+`xv6`:
+`
+xv6 kernel is booting
+init: starting sh
+$
+`
+### Parte B: Probar comandos básicos dentro de xv6
+```bash
+ls
+echo hola
+```
+El comando ls debe mostrar el contenido del sistema de archivos de xv6 (distinto al de Ubuntu).
+### Parte C: Salir de QEMU
+Presionar `Ctrl` y `a` al mismo tiempo, soltar ambas teclas, y presionar `x` a continuación (no
+simultáneamente). Esta combinación es propia de QEMU, no de `xv6` ni de Ubuntu.
+> ℹ️ *Atención: Ctrl+C no cierra QEMU; al estar dentro de la simulación, esa combinación se
+interpreta como una señal para xv6, no para la terminal de Ubuntu. Emplear siempre `Ctrl+a`
+seguido de `x`.*
+
+## 5. Ejercicio Práctico de Laboratorio
+
+### Ejecución del comando `ls` en xv6
 
 El comando `ls` se utiliza para listar los archivos y directorios del sistema de archivos actual. Una ejecución correcta en el shell de xv6 genera una salida estructurada en cuatro columnas con el siguiente formato:
 
