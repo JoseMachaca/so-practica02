@@ -136,3 +136,34 @@ $ ls
 
 Deberías ver en la lista de archivos y directorios el nombre que le asignaste a tu carpeta, en este caso (`lab02`).
 ![Arranque de xv6 y comandos de la Parte A](img/ParteA_02.png)
+
+### Uso del comando `cat README` en xv6
+
+---
+
+## 🚀 Uso Rápido
+Dentro de la terminal de xv6, ejecuta:
+
+```sh
+$ cat README
+```
+
+---
+
+## 📖 Explicación Detallada
+
+El comando **`cat`** (abreviatura de *concatenate*) se utiliza en sistemas operativos tipo Unix (incluyendo xv6) para leer, combinar y mostrar el contenido de uno o más archivos directamente en la salida estándar (la pantalla de la terminal).
+
+Al ejecutar **`cat README`**, ocurre lo siguiente paso a paso:
+
+1. **Búsqueda del archivo:** El sistema busca un archivo llamado exactamente `README` en el directorio actual en el que te encuentras posicionado.
+2. **Lectura de datos:** El kernel de xv6 abre el archivo y lee su contenido secuencialmente bloque por bloque.
+3. **Despliegue en pantalla:** Todo el texto contenido dentro del archivo `README` (que por lo general incluye información introductoria sobre la versión de xv6, instrucciones de compilación o notas de los desarrolladores) se imprime línea por línea en la terminal hasta llegar al final del archivo (`EOF`).
+
+### ¿Qué observar enn la captura?
+* **El comando ingresado:** Se ve la línea `$ cat README` junto al prompt de xv6.
+* **El texto impreso:** Aparece el contenido descriptivo del archivo en pantalla.
+* **Retorno al prompt:** Una vez finalizada la lectura, la terminal vuelve a mostrar el prompt (`$`) listo para recibir nuevos comandos.
+
+![Arranque de xv6 y comandos de la Parte A](img/ParteA_03.png)
+
