@@ -107,3 +107,32 @@ console        3 23 0
 ```
 
 ![Arranque de xv6 y comandos de la Parte A](img/ParteA_01.png)
+
+### Creación de una nueva carpeta en xv6 (`mkdir`)
+
+## Uso del comando `mkdir`
+
+El comando `mkdir` (del inglés *make directory*) permite crear una nueva carpeta en la ruta actual o en una ruta especificada.
+
+## Sintaxis general
+```text
+mkdir <nombre_de_carpeta>
+```
+
+## Ejemplo práctico
+Para crear una carpeta llamada `mi_carpeta` (puedes reemplazar `lab02` por el nombre de tu elección), escribe lo siguiente en la terminal de xv6:
+
+```sh
+$ mkdir mi_carpeta
+```
+
+## Verificación de la creación
+
+Para comprobar que la carpeta se ha creado correctamente, puedes listar el contenido del directorio actual utilizando el comando `ls`:
+
+```sh
+$ ls
+```
+
+Deberías ver en la lista de archivos y directorios el nombre que le asignaste a tu carpeta, en este caso (`lab02`).
+![Arranque de xv6 y comandos de la Parte A](img/ParteA_02.png)
